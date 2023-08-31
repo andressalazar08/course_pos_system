@@ -9,5 +9,5 @@ const PORT = process.env.PORT
 
 
 const server = app.listen(4000, ()=>{
-    console.log(`server running ${PORT}`)
+    console.log(`server running on port:  ${PORT}`)
 })
