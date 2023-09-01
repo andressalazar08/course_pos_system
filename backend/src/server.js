@@ -13,6 +13,7 @@ const User = require('./models/User');//CHECK HERE:preview first
 const Product = require('./models/Product');
 const Category = require('./models/Category');
 const Client = require('./models/Client');
+const Sale = require('./models/Sale');
 
 const authenticateAndSyncDatabase = async()=>{
     try{
