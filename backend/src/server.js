@@ -15,6 +15,7 @@ const Category = require('./models/Category');
 const Client = require('./models/Client');
 const Sale = require('./models/Sale');
 const Detail = require('./models/Detail');
+const Transaction = require('./models/Transaction');
 
 const authenticateAndSyncDatabase = async()=>{
     try{
