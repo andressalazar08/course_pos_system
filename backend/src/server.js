@@ -1,6 +1,7 @@
 const app = require('./app');
 const dotenv = require('dotenv');
-
+const { Sequelize } = require('sequelize');
+const sequelize = require('./config/database');
 
 dotenv.config({path:'src/config/.env'})
 
@@ -8,6 +9,25 @@ dotenv.config({path:'src/config/.env'})
 const PORT = process.env.PORT;
 
 
+
+//Database authenticate
+const authenticateAndSyncDatabase = async()=>{
+    try{
+        await sequelize.authenticate()
+        console.log('Database connection established');
+
+        //sync
+        await sequelize.sync()
+        console.log('Database synced successfully');
+
+
+    }catch(error){
+        console.error('Failed to connect or sync database', error)
+    }
+}
+
+
 const server = app.listen(PORT, ()=>{
     console.log(`Server running on Port: ${PORT}`)
+    authenticateAndSyncDatabase();
 })
