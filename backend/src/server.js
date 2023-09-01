@@ -8,6 +8,8 @@ dotenv.config({path:'src/config/.env'})
 
 const PORT = process.env.PORT
 
+//Model imports here
+const User = require('./models/User');//CHECK HERE:preview first
 
 
 const authenticateAndSyncDatabase = async()=>{
@@ -15,7 +17,7 @@ const authenticateAndSyncDatabase = async()=>{
         await sequelize.authenticate()
         console.log('Database connection established');
 
-        await sequelize.sync()
+        await sequelize.sync({force:true}) //CHECK HERE//
         console.log('Database synced successfully');
 
     }catch(error){
