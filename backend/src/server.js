@@ -10,7 +10,7 @@ const PORT = process.env.PORT
 
 //Model imports here
 const User = require('./models/User');//CHECK HERE:preview first
-
+const Product = require('./models/Product');
 
 const authenticateAndSyncDatabase = async()=>{
     try{
