@@ -10,4 +10,11 @@ app.get('/', (req, res)=>{
     })
 })
 
+// app.use(express.json());
+
+
+//Import all routes
+const userRoute = require('./routes/userRoute');
+app.use('/api/v1', userRoute);
+
 module.exports = app;   
