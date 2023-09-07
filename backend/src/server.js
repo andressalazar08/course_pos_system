@@ -12,6 +12,7 @@ const PORT = process.env.PORT;
 const User = require('./models/User');
 const Product = require('./models/Product');
 const Category = require('./models/Category');
+const Client = require('./models/Client');
 
 //Database authenticate
 const authenticateAndSyncDatabase = async()=>{
