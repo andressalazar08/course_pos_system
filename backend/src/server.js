@@ -14,6 +14,7 @@ const Product = require('./models/Product');
 const Category = require('./models/Category');
 const Client = require('./models/Client');
 const Sale = require('./models/Sale');
+const Detail = require('./models/Detail');
 
 //Database authenticate
 const authenticateAndSyncDatabase = async()=>{
