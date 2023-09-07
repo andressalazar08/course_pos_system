@@ -11,6 +11,7 @@ const PORT = process.env.PORT;
 //Models imports here:
 const User = require('./models/User');
 const Product = require('./models/Product');
+const Category = require('./models/Category');
 
 //Database authenticate
 const authenticateAndSyncDatabase = async()=>{
