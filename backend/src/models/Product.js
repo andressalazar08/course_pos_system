@@ -9,7 +9,7 @@ const Product = sequelize.define('Product',{
     description:{
         type:DataTypes.TEXT,
     },
-    image:{
+    imageUrl:{
         type:DataTypes.STRING,
     },
     price:{
