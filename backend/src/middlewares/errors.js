@@ -1,5 +1,5 @@
 const errorHandler =(err, req, res, next)=>{
-    let statusCode = 500;
+    err.statusCode = err.statusCode || 500;
     let customMessage = 'Internal server error';
     let errors=err.message;
 
@@ -8,7 +8,7 @@ const errorHandler =(err, req, res, next)=>{
         customMessage='Database connection refused, please check database server';
     }
 
-    res.status(statusCode).json({
+    res.status(err.statusCode).json({
         success:false,
         message:customMessage,
         errors:errors,
