@@ -13,12 +13,9 @@ const registerUser = catchAsyncErrors(async(req, res)=>{
         }
 
         //encrypt password before create
-        let hashedPassword;
-        try{
-            hashedPassword = await bcrypt.hash(password,10);
-        }catch(hashError){
-            return {message:'Internal error on password hashing'};
-        }
+               
+        let hashedPassword = await bcrypt.hash(password,10);
+        
 
 
         const newUser = await User.create({
