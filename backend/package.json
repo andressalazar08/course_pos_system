@@ -4,7 +4,7 @@
   "description": "nodejs-pos",
   "main": "server.js",
   "scripts": {
-    "start":"nodemon src/server.js"
+    "start": "nodemon src/server.js"
   },
   "keywords": [
     "pos",
@@ -14,6 +14,7 @@
   "author": "andres",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "mysql2": "^3.6.0",
