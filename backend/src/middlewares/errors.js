@@ -7,6 +7,9 @@ const errorHandler =(err, req, res, next)=>{
     if(err.name==='SequelizeConnectionRefusedError'){
         customMessage='Database connection refused, please check database server';
     }
+    if(err.name==='JsonWebTokenError'){
+        customMessage='There is some issues with the token'
+    }
 
     res.status(err.statusCode).json({
         success:false,
