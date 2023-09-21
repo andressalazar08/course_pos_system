@@ -36,17 +36,23 @@ const loginUser = catchAsyncErrors(async(req,res, next)=>{
 
     const isPasswordValid = await bcrypt.compare(password,user.password);
 
-    if(!isPasswordValid) return next(new ClientError('Wrong password'));
+    if(!isPasswordValid) return next(new ClientError('Wrong password',401));
 
     //if user email and password are correct a new token is generated
     const token = jwt.sign({userId:user.id}, process.env.SECRET_KEY, {expiresIn:'1h'});
     res.cookie('token', token, {httpOnly:true, maxAge:3600000});
 
     return res.status(200).json({message:'User successfully logged in'});
-    
+
 });
+
+const logoutUser = catchAsyncErrors(async(req, res, next)=>{
+    res.clearCookie('token');
+    return res.status(200).json({message:'User logged out'});
+})
 
 module.exports = {
     registerUser,
     loginUser,
+    logoutUser,
 }
