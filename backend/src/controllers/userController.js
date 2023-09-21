@@ -5,6 +5,7 @@ const { ClientError } = require('../utils/clientError');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv').config({path:'src/config/.env'});
 const op = require('sequelize').Op;
+const sendEmail = require('../utils/sendEmail');
 
 const registerUser = catchAsyncErrors(async(req, res, next)=>{
 
@@ -89,10 +90,35 @@ const updateUserProfile = catchAsyncErrors(async(req, res, next)=>{
     return res.status(200).json({message:'Data updated successfully'});
 });
 
+const forgotPassword = catchAsyncErrors(async(req, res, next)=>{
+    const { email } = req.body;
+
+    const user = await User.findOne({where:{email:email}});
+
+    if(!user) return next(new ClientError('User not found with this email'));
+
+    const resetToken =  user.getResetPasswordToken();
+
+    await user.save();
+
+    const resetUrl = `http://localhost:4000/api/v1/passwordReset/${resetToken}`;
+
+    const message = `Click here to reset yout password: \n\n${resetUrl}`;
+
+    await sendEmail({
+        email:user.email,
+        subject: "POS System password recovery",
+        message
+    });
+
+    return res.status(200).json({success:true, message:`Email sent to: ${user.email}`});
+});
+
 module.exports = {
     registerUser,
     loginUser,
     logoutUser,
     getUserInfo,
     updateUserProfile,
+    forgotPassword,
 }

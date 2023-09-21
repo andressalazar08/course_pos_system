@@ -1,4 +1,4 @@
-const nodemailer =  require('nodemail');
+const nodemailer =  require('nodemailer');
 const dotenv = require('dotenv').config({path:'src/config/.env'});
 
 const sendEmail =  async options => {
@@ -22,4 +22,4 @@ const sendEmail =  async options => {
 
 };
 
-module.exports = {sendEmail};
+module.exports = sendEmail;
