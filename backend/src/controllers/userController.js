@@ -49,10 +49,22 @@ const loginUser = catchAsyncErrors(async(req,res, next)=>{
 const logoutUser = catchAsyncErrors(async(req, res, next)=>{
     res.clearCookie('token');
     return res.status(200).json({message:'User logged out'});
-})
+});
+
+const getUserInfo = catchAsyncErrors(async(req, res, next)=>{
+    const user = await User.findByPk(req.user.userId,{
+        attributes:['name', 'email', 'profile']
+    });
+
+    return res.status(200).json({
+        message:'User found',
+        user
+    })
+});
 
 module.exports = {
     registerUser,
     loginUser,
     logoutUser,
+    getUserInfo,
 }
