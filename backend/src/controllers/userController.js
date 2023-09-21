@@ -4,6 +4,7 @@ const { catchAsyncErrors } = require('../middlewares/catchAsync');
 const { ClientError } = require('../utils/clientError');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv').config({path:'src/config/.env'});
+const op = require('sequelize').Op;
 
 const registerUser = catchAsyncErrors(async(req, res, next)=>{
 
@@ -62,9 +63,36 @@ const getUserInfo = catchAsyncErrors(async(req, res, next)=>{
     })
 });
 
+const updateUserProfile = catchAsyncErrors(async(req, res, next)=>{
+    const { newName, newEmail } = req.body;
+    let user = await User.findByPk(req.user.userId);
+
+    if(newEmail){
+        //check if other user exists with this email
+        const userWithEmail = await User.findOne({
+            where:{
+                email:newEmail,
+                id:{[op.not]:req.user.userId}
+            }
+        });
+        if(userWithEmail) return next(new ClientError('Another user has this email, cannot update', 409));
+
+        user.email = newEmail;
+    }
+
+    if(newName){
+        user.name = newName;
+    }
+
+    await user.save();
+
+    return res.status(200).json({message:'Data updated successfully'});
+});
+
 module.exports = {
     registerUser,
     loginUser,
     logoutUser,
     getUserInfo,
+    updateUserProfile,
 }

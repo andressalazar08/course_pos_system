@@ -4,6 +4,7 @@ const {
   loginUser,
   logoutUser,
   getUserInfo,
+  updateUserProfile,
 } = require("../controllers/userController");
 const router = express.Router();
 const { newUserValidation } = require('../middlewares/userValidate');
@@ -16,6 +17,7 @@ router.post('/loginUser', loginUser);
 router.post('/logoutUser', logoutUser);
 //check if user is authenticated first
 router.get('/me', isAuthenticatedUser, getUserInfo);
+router.put('/updateUser', isAuthenticatedUser, updateUserProfile);
 
 
 module.exports = router;
