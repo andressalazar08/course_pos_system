@@ -7,6 +7,7 @@ const {
   updateUserProfile,
   forgotPassword,
   changePassword,
+  updatePassword,
 } = require("../controllers/userController");
 const router = express.Router();
 const { newUserValidation } = require('../middlewares/userValidate');
@@ -22,5 +23,6 @@ router.get('/me', isAuthenticatedUser, getUserInfo);
 router.put('/updateUser', isAuthenticatedUser, updateUserProfile);
 router.post('/forgotPassword', forgotPassword);
 router.put('/passwordReset/:resetToken', changePassword);
+router.put('/updatePassword', isAuthenticatedUser, updatePassword);
 
 module.exports = router;
