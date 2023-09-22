@@ -33,7 +33,7 @@ const registerUser = catchAsyncErrors(async(req, res, next)=>{
 const loginUser = catchAsyncErrors(async(req,res, next)=>{
     const { email, password } = req.body;
 
-    const user = await User.findOne({where:{email:email}});
+    const user = await User.findOne({where:{email:email, isActive:true}});
 
     if(!user) return next(new ClientError('User not found', 401));
 
@@ -94,7 +94,7 @@ const updateUserProfile = catchAsyncErrors(async(req, res, next)=>{
 const forgotPassword = catchAsyncErrors(async(req, res, next)=>{
     const { email } = req.body;
 
-    const user = await User.findOne({where:{email:email}});
+    const user = await User.findOne({where:{email:email, isActive:true}});
 
     if(!user) return next(new ClientError('User not found with this email'));
 
