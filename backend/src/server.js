@@ -16,6 +16,7 @@ const Client = require('./models/Client');
 const Sale = require('./models/Sale');
 const Detail = require('./models/Detail');
 const Transaction = require('./models/Transaction');
+const { importFromJSON } = require('./utils/dataSeeder');
 
 //Database authenticate
 const authenticateAndSyncDatabase = async()=>{
@@ -24,9 +25,11 @@ const authenticateAndSyncDatabase = async()=>{
         console.log('Database connection established');
 
         //sync
-        await sequelize.sync({force:true})
+        await sequelize.sync({force:false})
         console.log('Database synced successfully');
 
+        //populate DB
+        //importFromJSON();
 
     }catch(error){
         console.error('Failed to connect or sync database', error)
