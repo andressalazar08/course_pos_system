@@ -16,6 +16,9 @@ app.get('/', (req,res)=>{
 const userRoute = require('./routes/userRoute');
 app.use('/api/v1', userRoute);
 
+const adminRoute = require('./routes/adminRoute');
+app.use('/api/v1/admin', adminRoute);
+
 app.use(errorHandler);
 
 module.exports = app;
