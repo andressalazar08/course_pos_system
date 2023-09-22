@@ -27,6 +27,10 @@ const User = sequelize.define('User', {
     imageUrl:{
         type:DataTypes.STRING,
     },
+    isActive:{
+        type:DataTypes.BOOLEAN,
+        defaultValue:true,
+    },
     resetPasswordToken:{
         type:DataTypes.STRING,
     },
