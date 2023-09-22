@@ -1,0 +1,82 @@
+[
+    {
+      "name": "User 1",
+      "email": "user1@email.com",
+      "password": "password1",
+      "profile": "admin",
+      "imageUrl": "https://randomuser.me/api/portraits/women/31.jpg",
+      "isActive": true
+    },
+    {
+      "name": "User 2",
+      "email": "user2@email.com",
+      "password": "password2",
+      "profile": "user",
+      "imageUrl": "https://randomuser.me/api/portraits/men/51.jpg",
+      "isActive": true
+    },
+    {
+      "name": "User 3",
+      "email": "user3@email.com",
+      "password": "password3",
+      "profile": "user",
+      "imageUrl": "https://randomuser.me/api/portraits/men/28.jpg",
+      "isActive": true
+    },
+    {
+      "name": "User 4",
+      "email": "user4@email.com",
+      "password": "password4",
+      "profile": "admin",
+      "imageUrl": "https://randomuser.me/api/portraits/women/57.jpg",
+      "isActive": true
+    },
+    {
+      "name": "User 5",
+      "email": "user5@email.com",
+      "password": "password5",
+      "profile": "user",
+      "imageUrl": "https://randomuser.me/api/portraits/women/90.jpg",
+      "isActive": false
+    },
+    {
+      "name": "User 6",
+      "email": "user6@email.com",
+      "password": "password6",
+      "profile": "user",
+      "imageUrl": "https://randomuser.me/api/portraits/women/76.jpg",
+      "isActive": true
+    },
+    {
+      "name": "User 7",
+      "email": "user7@email.com",
+      "password": "password7",
+      "profile": "user",
+      "imageUrl": "https://randomuser.me/api/portraits/lego/8.jpg",
+      "isActive": false
+    },
+    {
+      "name": "User 8",
+      "email": "user8@email.com",
+      "password": "password8",
+      "profile": "user",
+      "imageUrl": "https://randomuser.me/api/portraits/lego/4.jpg",
+      "isActive": true
+    },
+    {
+      "name": "User 9",
+      "email": "user9@email.com",
+      "password": "password9",
+      "profile": "user",
+      "imageUrl": "https://randomuser.me/api/portraits/lego/1.jpg",
+      "isActive": true
+    },
+    {
+      "name": "User 10",
+      "email": "user10@email.com",
+      "password": "password10",
+      "profile": "user",
+      "imageUrl": "https://randomuser.me/api/portraits/lego/5.jpg",
+      "isActive": true
+    }
+  ]
